@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LPU Library | Student Portal</title>
+
+<style>
+
+/* GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #20283a;
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* LOGIN PAGE */
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    background: #14213d;
+}
+
+.login-image {
+    width: 55%;
+    background:
+    linear-gradient(#14213d55, #14213d99),
+    url("https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=1400&q=85");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px;
+    color: white;
+}
+
+.login-image h1 {
+    font-size: 45px;
+    line-height: 1.2;
+}
+
+.login-image p {
+    margin-top: 15px;
+    font-size: 17px;
+}
+
+.login-area {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: #ffffff;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 390px;
+}
+
+.login-logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #14213d;
+    margin-bottom: 35px;
+}
+
+.login-logo span {
+    color: #f26522;
+}
+
+.login-box h2 {
+    font-size: 30px;
+    color: #14213d;
+    margin-bottom: 8px;
+}
+
+.login-box p {
+    color: #778094;
+    margin-bottom: 25px;
+}
+
+.login-box label {
+    display: block;
+    font-weight: bold;
+    margin: 17px 0 7px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d5dbe5;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.login-box input:focus {
+    outline: 2px solid #f6a078;
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background: #f26522;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.login-button:hover {
+    background: #c94e12;
+}
+
+.login-message {
+    margin-top: 15px;
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* WEBSITE */
+
+#website {
+    display: none;
+}
+
+header {
+    background: #14213d;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #f26522;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff9a65;
+}
+
+.logout {
+    background: #f26522;
+    padding: 8px 14px;
+    border-radius: 6px;
+}
+
+/* PAGE VIEWS */
+.main-page { display: block; }
+.service-page { display: none; }
+.service-page.active { display: block; }
+
+/* HERO */
+
+.hero {
+    min-height: 500px;
+    background:
+    linear-gradient(90deg, #14213dcc, #14213d55),
+    url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1600&q=85");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 70px 8%;
+    color: white;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.tag {
+    color: #ffb38e;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    line-height: 1.15;
+    margin: 18px 0;
+}
+
+.hero p {
+    font-size: 17px;
+    color: #e9edf5;
+}
+
+.button {
+    display: inline-block;
+    background: #f26522;
+    color: white;
+    padding: 12px 23px;
+    border: none;
+    border-radius: 7px;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 15px 7px 0 0;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: #c94e12;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 65px 7%;
+    scroll-margin-top: 70px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: #14213d;
+}
+
+.section-title p {
+    color: #667085;
+}
+
+/* CARDS */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 260px;
+    padding: 25px;
+    border-radius: 13px;
+    box-shadow: 0 5px 20px #17233b15;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card h3 {
+    color: #14213d;
+    margin: 10px 0;
+}
+
+.card p {
+    color: #667085;
+}
+
+.number {
+    color: #f26522;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* ABOUT */
+
+.soft {
+    background: #fff3eb;
+}
+
+.split {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.split > div {
+    flex: 1;
+    min-width: 250px;
+}
+
+.split img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* FORMS */
+
+.form-box {
+    background: white;
+    max-width: 750px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px #17233b15;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 15px 0 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd2dc;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.form-box h3 {
+    color: #14213d;
+    margin-top: 20px;
+}
+
+/* SEATS */
+
+.seats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 15px 0;
+}
+
+.seat {
+    padding: 12px;
+    background: #e5f5eb;
+    color: #176b3a;
+    border: 1px solid #298451;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.seat.selected {
+    background: #f26522;
+    color: white;
+}
+
+/* SUMMARY */
+
+#summary {
+    background: #eef8f0;
+    border-left: 5px solid #23834b;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 7px;
+    white-space: pre-line;
+}
+
+/* FOOTER */
+
+footer {
+    background: #14213d;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer h3 {
+    color: #ff9a65;
+}
+
+.small-text {
+    color: #aebbd0;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* MOBILE */
+
+@media(max-width: 750px) {
+
+    #loginPage {
+        flex-direction: column;
+    }
+
+    .login-image {
+        width: 100%;
+        min-height: 250px;
+        padding: 30px;
+    }
+
+    .login-image h1 {
+        font-size: 30px;
+    }
+
+    .login-area {
+        width: 100%;
+        padding: 35px 25px;
+    }
+
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero {
+        min-height: 430px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    section {
+        padding: 45px 5%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FIRST SCREEN: LOGIN -->
+
+<div id="loginPage">
+
+    <div class="login-image">
+
+        <div>
+            <h1>Welcome to a Better Way of Learning.</h1>
+
+            <p>
+                Your library. Your study space.
+                Your journey towards success.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="login-area">
+
+        <div class="login-box">
+
+            <div class="login-logo">
+                <span>LPU</span> LIBRARY
+            </div>
+
+            <h2>Student Login</h2>
+
+            <p>
+                Enter your student credentials to continue.
+            </p>
+
+            <form id="loginForm">
+
+                <label>Registration ID</label>
+
+                <input type="text" id="regID"
+                placeholder="Enter your registration ID" required>
+
+                <label>Password</label>
+
+                <input type="password" id="password"
+                placeholder="Enter your password" required>
+
+                <button type="submit" class="login-button">
+                    LOGIN TO LIBRARY
+                </button>
+
+            </form>
+
+            <div class="login-message" id="loginMessage"></div>
+
+            <p style="font-size:12px; margin-top:25px;">
+                Student demonstration portal.
+                Not connected to the official LPU login system.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN WEBSITE: SHOWN AFTER LOGIN -->
+
+<div id="website">
+
+<header>
+
+    <a href="#home" class="logo" onclick="showPage('homePage'); return false;">
+        <span>LPU</span> LIBRARY
+    </a>
+
+    <nav>
+        <a href="#home" onclick="showPage('homePage'); return false;">Home</a>
+        <a href="#about" onclick="showPage('about'); return false;">About</a>
+        <a href="#services" onclick="showPage('services'); return false;">Services</a>
+        <a href="#booking" onclick="showPage('booking'); return false;">Booking</a>
+        <a href="#contact" onclick="showPage('contact'); return false;">Support</a>
+        <a href="#" class="logout" onclick="logout()">Logout</a>
+    </nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<div id="homePage" class="main-page">
+<div class="hero" id="home">
+
+    <div class="hero-text">
+
+        <p class="tag">LOVELY PROFESSIONAL UNIVERSITY</p>
+
+        <h1>Your Space to Learn, Research and Grow.</h1>
+
+        <p>
+            Discover a better way to plan your study time.
+            Explore library services and choose your study space.
+        </p>
+
+        <a href="#booking" class="button" onclick="showPage('booking'); return false;">Book Your Seat</a>
+
+        <a href="#services" class="button" onclick="showPage('services'); return false;">Explore Services</a>
+
+    </div>
+
+</div>
+
+
+<section>
+
+    <div class="section-title">
+        <h2>Welcome to LPU Library</h2>
+        <p>A comfortable place for learning, reading and collaboration.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <span class="number">01</span>
+            <h3>Study Spaces</h3>
+            <p>Choose a suitable place for focused individual study.</p>
+        </div>
+
+        <div class="card">
+            <span class="number">02</span>
+            <h3>Group Learning</h3>
+            <p>Plan discussions and project work with classmates.</p>
+        </div>
+
+        <div class="card">
+            <span class="number">03</span>
+            <h3>Digital Learning</h3>
+            <p>Explore digital resources and learning facilities.</p>
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+<!-- ABOUT -->
+
+<section class="soft main-page" id="about">
+
+    <div class="section-title">
+        <h2>About Our Project</h2>
+        <p>Get to know our library website.</p>
+    </div>
+
+    <div class="split">
+
+        <div>
+            <h2>A Better Study Experience</h2>
+
+            <br>
+
+            <p>
+                The LPU Library Seat and Resource Booking System
+                is a student-created demonstration website.
+            </p>
+
+            <br>
+
+            <p>
+                It provides an interface where students can
+                explore library services and enter sample
+                seat booking details.
+            </p>
+
+            <br>
+
+            <p>
+                This project is created using HTML, CSS and JavaScript.
+            </p>
+        </div>
+
+        <div>
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1000&q=85"
+            alt="Modern library">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services" class="main-page">
+
+    <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Explore the facilities shown in our project.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card service-card" onclick="showServicePage('seatBookingPage')">
+            <span class="number">01</span>
+            <h3>Seat Booking</h3>
+            <p>Select a sample seat for your study session.</p>
+        </div>
+
+        <div class="card service-card" onclick="showServicePage('groupDiscussionPage')">
+            <span class="number">02</span>
+            <h3>Group Discussion</h3>
+            <p>Plan a space for meetings and group study.</p>
+        </div>
+
+        <div class="card service-card" onclick="showServicePage('digitalResourcesPage')">
+            <span class="number">03</span>
+            <h3>Digital Resources</h3>
+            <p>Explore computer access and digital study material.</p>
+        </div>
+
+        <div class="card service-card" onclick="showServicePage('readingAreaPage')">
+            <span class="number">04</span>
+            <h3>Reading Area</h3>
+            <p>Discover a quiet place for reading.</p>
+        </div>
+
+        <div class="card service-card" onclick="showServicePage('studentSupportPage')">
+            <span class="number">05</span>
+            <h3>Student Support</h3>
+            <p>Explore information about library facilities.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INDIVIDUAL SERVICE PAGES -->
+
+<section id="seatBookingPage" class="service-page">
+    <div class="section-title">
+        <h2>Seat Booking</h2>
+        <p>Select a sample seat for your study session.</p>
+    </div>
+    <div class="form-box">
+        <p>Choose a suitable study seat and reserve your study time through the booking section.</p>
+        <a href="#booking" class="button" onclick="showBookingSection(); return false;">Book Your Seat</a>
+        <button class="button" onclick="showServicesPage()">Back to Services</button>
+    </div>
+</section>
+
+<section id="groupDiscussionPage" class="service-page">
+    <div class="section-title">
+        <h2>Group Discussion</h2>
+        <p>Plan a space for meetings and group study.</p>
+    </div>
+    <div class="form-box">
+        <p>Use the discussion zone to plan meetings, collaborate and work on projects with classmates.</p>
+        <a href="#booking" class="button" onclick="showBookingSection(); return false;">Book a Study Space</a>
+        <button class="button" onclick="showServicesPage()">Back to Services</button>
+    </div>
+</section>
+
+<section id="digitalResourcesPage" class="service-page">
+    <div class="section-title">
+        <h2>Digital Resources</h2>
+        <p>Explore computer access and digital study material.</p>
+    </div>
+    <div class="form-box">
+        <p>Explore digital learning facilities and use the booking section to enter your sample resource details.</p>
+        <a href="#booking" class="button" onclick="showBookingSection(); return false;">Book a Resource</a>
+        <button class="button" onclick="showServicesPage()">Back to Services</button>
+    </div>
+</section>
+
+<section id="readingAreaPage" class="service-page">
+    <div class="section-title">
+        <h2>Reading Area</h2>
+        <p>Discover a quiet place for reading.</p>
+    </div>
+    <div class="form-box">
+        <p>Choose a quiet study zone for focused reading and individual study.</p>
+        <a href="#booking" class="button" onclick="showBookingSection(); return false;">Book a Study Space</a>
+        <button class="button" onclick="showServicesPage()">Back to Services</button>
+    </div>
+</section>
+
+<section id="studentSupportPage" class="service-page">
+    <div class="section-title">
+        <h2>Student Support</h2>
+        <p>Explore information about library facilities.</p>
+    </div>
+    <div class="form-box">
+        <p>For questions or feedback about this project, use the contact section.</p>
+        <a href="#contact" class="button" onclick="showContactSection(); return false;">Contact Us</a>
+        <button class="button" onclick="showServicesPage()">Back to Services</button>
+    </div>
+</section>
+
+
+<!-- BOOKING -->
+
+<section class="soft main-page" id="booking">
+
+    <div class="section-title">
+        <h2>Book Your Study Space</h2>
+        <p>Enter your details and select a sample seat.</p>
+    </div>
+
+    <div class="form-box">
+
+        <form id="bookingForm">
+
+            <h3>Student Details</h3>
+
+            <label>Registration ID</label>
+
+            <input type="text" id="bookingReg"
+            placeholder="Enter registration ID" required>
+
+            <h3>Booking Details</h3>
+
+            <label>Resource Type</label>
+
+            <select id="type" required>
+                <option value="">Choose a resource</option>
+                <option>Study Seat</option>
+                <option>Group Discussion Room</option>
+                <option>Digital Resource</option>
+            </select>
+
+            <label>Study Zone</label>
+
+            <select id="zone" required>
+                <option value="">Choose a zone</option>
+                <option>Silent Study Zone</option>
+                <option>General Reading Zone</option>
+                <option>Discussion Zone</option>
+            </select>
+
+            <label>Booking Date</label>
+
+            <input type="date" id="date" required>
+
+            <label>Start Time</label>
+
+            <input type="time" id="start" required>
+
+            <label>End Time</label>
+
+            <input type="time" id="end" required>
+
+            <h3>Select Your Seat</h3>
+
+            <div class="seats">
+
+                <button type="button" class="seat" onclick="selectSeat(this)">A1</button>
+                <button type="button" class="seat" onclick="selectSeat(this)">A2</button>
+                <button type="button" class="seat" onclick="selectSeat(this)">A3</button>
+                <button type="button" class="seat" onclick="selectSeat(this)">A4</button>
+                <button type="button" class="seat" onclick="selectSeat(this)">B1</button>
+                <button type="button" class="seat" onclick="selectSeat(this)">B2</button>
+                <button type="button" class="seat" onclick="selectSeat(this)">B3</button>
+                <button type="button" class="seat" onclick="selectSeat(this)">B4</button>
+
+            </div>
+
+            <p id="seatInfo">No seat selected.</p>
+
+            <label>Additional Notes</label>
+
+            <textarea id="notes" rows="3"
+            placeholder="Optional message"></textarea>
+
+            <button type="submit" class="button">Confirm Booking</button>
+
+            <button type="reset" class="button">Reset Form</button>
+
+        </form>
+
+        <div id="summary">
+            <h3>Booking Summary</h3>
+            <p>Your booking details will appear here.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BOOKING CONFIRMATION PAGE -->
+
+<section id="confirmationPage" class="main-page soft">
+
+    <div class="section-title">
+        <h2>Booking Confirmed!</h2>
+        <p>Your study space booking has been completed successfully.</p>
+    </div>
+
+    <div class="form-box">
+        <div id="confirmationDetails" style="white-space: pre-line; line-height: 2;"></div>
+        <button type="button" class="button" onclick="showPage('homePage')">Go to Home</button>
+        <button type="button" class="button" onclick="showPage('booking')">Make Another Booking</button>
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="main-page">
+
+    <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Share your questions and feedback.</p>
+    </div>
+
+    <div class="split">
+
+        <div>
+            <h2>Project Information</h2>
+
+            <br>
+
+            <p><b>Project:</b> LPU Library Booking System</p>
+            <p><b>University:</b> Lovely Professional University</p>
+            <p><b>Location:</b> Phagwara, Punjab</p>
+            <p><b>Subject:</b> Internet Programming</p>
+
+            <br>
+
+            <p>This is a student demonstration project.</p>
+        </div>
+
+        <div class="form-box">
+
+            <h2>Send Feedback</h2>
+
+            <form onsubmit="alert('Thank you for your feedback! This is a demo form.'); return false;">
+
+                <label>Your Name</label>
+                <input type="text" required placeholder="Enter your name">
+
+                <label>Your Message</label>
+                <textarea rows="5" required placeholder="Write your message"></textarea>
+
+                <button type="submit" class="button">Submit Feedback</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>LPU LIBRARY</h3>
+
+    <p>Your Space to Learn, Research and Grow.</p>
+
+    <p class="small-text">
+        Student-developed Internet Programming project.
+        Not an official LPU website.
+    </p>
+
+    <p class="small-text">© 2026 LPU Library Project</p>
+
+</footer>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+// PAGE NAVIGATION: each main menu item opens its own page view
+
+function showPage(pageID) {
+    hideServicePages();
+
+    var pages = document.getElementsByClassName("main-page");
+    for (var i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    var selectedPage = document.getElementById(pageID);
+    if (selectedPage) {
+        selectedPage.style.display = "block";
+    }
+
+    window.location.hash = pageID === "homePage" ? "home" : pageID;
+    window.scrollTo(0, 0);
+}
+
+function openServicesPage() {
+    showPage("services");
+}
+
+function showHomePage() {
+    showPage("homePage");
+}
+
+function hideServicePages() {
+    var pages = document.getElementsByClassName("service-page");
+    for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.remove("active");
+        pages[i].style.display = "none";
+    }
+}
+
+function showServicePage(pageID) {
+    var pages = document.getElementsByClassName("main-page");
+    for (var i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+    hideServicePages();
+    var page = document.getElementById(pageID);
+    if (page) {
+        page.classList.add("active");
+        page.style.display = "block";
+    }
+    window.location.hash = pageID;
+    window.scrollTo(0, 0);
+}
+
+function showServicesPage() {
+    showPage("services");
+}
+
+function showBookingSection() {
+    showPage("booking");
+}
+
+function showContactSection() {
+    showPage("contact");
+}
+
+// LOGIN CHECK
+
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    var reg = document.getElementById("regID").value.trim();
+
+    var pass = document.getElementById("password").value;
+
+    // DEMO CREDENTIALS
+    // Change these two values to your own test credentials.
+
+    var correctReg = "12345678";
+    var correctPass = "lpu123";
+
+    if (reg === correctReg && pass === correctPass) {
+
+        document.getElementById("loginPage").style.display = "none";
+
+        document.getElementById("website").style.display = "block";
+        showPage("homePage");
+
+        document.getElementById("loginMessage").innerText = "";
+
+        window.scrollTo(0, 0);
+
+    } else {
+
+        document.getElementById("loginMessage").innerText =
+        "Invalid Registration ID or Password!";
+
+    }
+
+});
+
+
+// LOGOUT
+
+function logout() {
+
+    document.getElementById("website").style.display = "none";
+
+    document.getElementById("loginPage").style.display = "flex";
+
+    document.getElementById("loginForm").reset();
+
+    window.scrollTo(0, 0);
+
+}
+
+
+// SEAT SELECTION
+
+var selectedSeat = "";
+
+function selectSeat(button) {
+
+    var seats = document.getElementsByClassName("seat");
+
+    for (var i = 0; i < seats.length; i++) {
+        seats[i].classList.remove("selected");
+    }
+
+    button.classList.add("selected");
+
+    selectedSeat = button.innerText;
+
+    document.getElementById("seatInfo").innerText =
+    "Selected Seat: " + selectedSeat;
+
+}
+
+
+// BOOKING FORM
+
+document.getElementById("bookingForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    var reg = document.getElementById("bookingReg").value;
+    var type = document.getElementById("type").value;
+    var zone = document.getElementById("zone").value;
+    var date = document.getElementById("date").value;
+    var start = document.getElementById("start").value;
+    var end = document.getElementById("end").value;
+    var notes = document.getElementById("notes").value;
+
+    if (end <= start) {
+        alert("End time must be after start time.");
+        return;
+    }
+
+    if (type == "Study Seat" && selectedSeat == "") {
+        alert("Please select a seat.");
+        return;
+    }
+
+    var details =
+    "BOOKING CONFIRMED (DEMO)\n\n" +
+    "Registration ID: " + reg + "\n" +
+    "Resource: " + type + "\n" +
+    "Study Zone: " + zone + "\n" +
+    "Seat: " + (selectedSeat || "Not required") + "\n" +
+    "Date: " + date + "\n" +
+    "Time: " + start + " to " + end + "\n" +
+    "Notes: " + notes;
+
+    document.getElementById("confirmationDetails").innerText = details;
+
+    // Open the confirmation as a separate page after a successful booking.
+    showPage("confirmationPage");
+
+});
+
+
+// RESET BOOKING
+
+document.getElementById("bookingForm").addEventListener("reset", function() {
+
+    selectedSeat = "";
+
+    var seats = document.getElementsByClassName("seat");
+
+    for (var i = 0; i < seats.length; i++) {
+        seats[i].classList.remove("selected");
+    }
+
+    document.getElementById("seatInfo").innerText =
+    "No seat selected.";
+
+    document.getElementById("summary").innerHTML =
+    "<h3>Booking Summary</h3><p>Your booking details will appear here.</p>";
+
+});
+
+</script>
+
+</body>
+</html>
